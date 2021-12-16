@@ -55,7 +55,7 @@
                     <i class="fas fa-times"></i>
                     Close
                 </button>
-                <button type="button" id="btn-save" class="btn btn-success">
+                <button type="button" id="btn-save" class="btn btn-primary">
                     <i class="fas fa-check"></i>
                     Save Changes
                 </button>
@@ -83,10 +83,10 @@
                 </div>
             </div>
             <div class="section-body">
-                <div class="card card-success">
+                <div class="card card-primary">
                     <div class="card-header">
                         @if (auth()->user()->isAdmin())
-                        <button class="btn btn-success ml-auto" id="btn-add">
+                        <button class="btn btn-primary ml-auto" id="btn-add">
                             <i class="fas fa-plus-circle"></i>
                             Tambah Data
                         </button>

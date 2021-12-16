@@ -228,7 +228,7 @@
                                                 <h4>{{ $popularBook->title }}</h4>
                                                 <p class="item-price">{{ $popularBook->category_id ? $popularBook->category->name : '' }}</p>
 
-                                                <a href="{{ route('public.bookDetail', $popularBook->id) }}" class="btn btn-success">View Book</a>
+                                                <a href="{{ route('public.bookDetail', $popularBook->id) }}" class="btn btn-primary">View Book</a>
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +286,7 @@
                                                 <h4>{{ $latestBook->title }}</h4>
                                                 <p class="item-price">{{ $latestBook->category_id ? $latestBook->category->name : '' }}</p>
 
-                                                <a href="{{ route('public.bookDetail', $latestBook->id) }}" class="btn btn-success">View Book</a>
+                                                <a href="{{ route('public.bookDetail', $latestBook->id) }}" class="btn btn-primary">View Book</a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,0 +1,1 @@
+<img src="http://127.0.0.1:8000/img/reseller/{{ $logo }}"  width="100" height="100" class="img-rounded" align="center" />

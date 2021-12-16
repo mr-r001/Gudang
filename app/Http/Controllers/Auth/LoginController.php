@@ -29,7 +29,13 @@ class LoginController extends Controller
     protected $redirectTo = '/';
     protected function redirectTo()
     {
-        return route('admin.dashboard');
+        if (auth()->user()->isAdmin()) {
+            return route('admin.dashboard');
+        } elseif (auth()->user()->isOperator()) {
+            return route('admin.transaction.index');
+        } else {
+            return route('admin.dashboard');
+        }
     }
 
     protected $username;

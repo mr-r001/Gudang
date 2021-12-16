@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Role;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

@@ -26,7 +26,7 @@
                                 class="shadow-light rounded-circle">
                         </div>
 
-                        <div class="card card-success">
+                        <div class="card card-primary">
                             <div class="card-header">
                                 <h4>Reset Password</h4>
                             </div>
@@ -64,7 +64,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block" tabindex="4">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                             Reset Password
                                         </button>
                                     </div>

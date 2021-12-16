@@ -21,17 +21,10 @@
                         <div
                             class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                             <div class="login-brand">
-                                <img src="https://kejari-pagaralam.kejaksaan.go.id/sipatal/backend/img/KejaksaanRI.png" alt="logo" width="100"
-                                <font size="18">
-                                <br>SIPATAL 
-                                <br>
-                                <font size="1">
-                                    (Sistem Informasi Peta Digital)
-                                </font>
-                                <br>KEJARI PAGAR ALAM</font>
+                                <br>LOGIN</font>
                             </div>
 
-                            <div class="card card-success">
+                            <div class="card card-primary">
                                 <div class="card-body">
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
@@ -61,7 +54,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-success btn-lg btn-block" tabindex="4">
+                                            <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                                 Login
                                             </button>
                                         </div>
@@ -69,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="simple-footer">
-                                Copyright &copy; Kejaksaan Negeri Pagar Alam
+                                Copyright &copy; Sistem Inventory Barang
                             </div>
                         </div>
                     </div>
