@@ -47,12 +47,18 @@
                     <a class="nav-link" href="{{ route('admin.user.index') }}"><i class="fas fa-user"></i> User Management</a>
                 </li>
             @elseif ( auth()->user()->isLeader())
-                <li class="{{ request()->segment(2) == 'transaction' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.transaction.index') }}"><i class="fas fa-exchange"></i> Return Barang</a>
+                <li class="{{ request()->segment(2) == 'product' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.product.index') }}"><i class="fas fa-list-alt"></i> Data Produk</a>
                 </li>
             @elseif ( auth()->user()->isOperator())
                 <li class="{{ request()->segment(2) == 'transaction' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin.transaction.index') }}"><i class="fas fa-exchange-alt"></i> Transaksi</a>
+                </li>
+                <li class="{{ request()->segment(2) == 'cart' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.cart.index') }}"><i class="fas fa-shopping-cart"></i> Keranjang</a>
+                </li>
+                <li class="{{ request()->segment(2) == 'scan' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.scan.index') }}"><i class="fas fa-qrcode"></i> Scan QR Code</a>
                 </li>
             @endif
         </ul>

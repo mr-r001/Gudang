@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Product;
 use App\Models\Rack;
 use Illuminate\Http\Request;
 
@@ -16,6 +18,7 @@ class TransactionController extends Controller
     {
         $category = Rack::with('category', 'product')->get();
         $data = $category->groupBy('category.name');
+        // dd($data);
         return view('admin.transaction.index', compact('data'));
     }
 
@@ -83,5 +86,29 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addCart()
+    {
+        $product_id         = $_GET['id'];
+        $user_id            = auth()->user()->id;
+
+        $product            = Product::findOrFail($product_id);
+        if ($product->stock == 0) {
+            return response()->json([
+                'message' => 'Stok kosong',
+            ]);
+        } else {
+            $product->stock     = $product->stock - 1;
+            $save               = $product->save();
+            if ($save) {
+                $data = new Cart();
+                $data->user_id           = $user_id;
+                $data->product_id        = $product_id;
+                $data->save();
+
+                return response()->json($product);
+            }
+        }
     }
 }

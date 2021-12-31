@@ -158,6 +158,30 @@
                         searchable: false
                     }
                 ],
+                language: {
+                    "decimal":        "",
+                    "emptyTable":     "No data available in table",
+                    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty":      "Menampilan 0 sampai 0 dari 0 data",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Tampilkan _MENU_ data",
+                    "loadingRecords": "Loading...",
+                    "processing":     "Processing...",
+                    "search":         "Cari:",
+                    "zeroRecords":    "No matching records found",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Selanjutnya",
+                        "previous":   "Sebelumnya"
+                    },
+                    "aria": {
+                        "sortAscending":  ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                }
             });
 
             $('#user-table').DataTable().on('draw', function() {

@@ -34,7 +34,7 @@ class LoginController extends Controller
         } elseif (auth()->user()->isOperator()) {
             return route('admin.transaction.index');
         } else {
-            return route('admin.dashboard');
+            return route('admin.product.index');
         }
     }
 

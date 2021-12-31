@@ -89,6 +89,10 @@ class ScanController extends Controller
 
         $data = Product::where('code', $code)->get();
 
-        return view('admin.scan.show', compact('data'));
+        if (count($data) > 0) {
+            return view('admin.scan.show', compact('data'));
+        } else {
+            return back()->with('error', "Data tidak ditemukan");
+        }
     }
 }

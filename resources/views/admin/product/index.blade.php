@@ -6,6 +6,24 @@
 @endsection
 
 @section('content')
+
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body center" style="display: flex; justify-content: center">
+                    <span id="qrcode"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
@@ -82,6 +100,7 @@
             });
             // Initializing DataTable
             $('#ebook-table').DataTable({
+                dom: 'Bfrtip',
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('admin.product.index') }}',
@@ -124,9 +143,55 @@
                         searchable: false
                     }
                 ],
-                buttons: [],
-                order: []
+                buttons: ['csv', 'excel', 'pdf'],
+                order: [],
+                language: {
+                    "decimal":        "",
+                    "emptyTable":     "No data available in table",
+                    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty":      "Menampilan 0 sampai 0 dari 0 data",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Tampilkan _MENU_ data",
+                    "loadingRecords": "Loading...",
+                    "processing":     "Processing...",
+                    "search":         "Cari:",
+                    "zeroRecords":    "No matching records found",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Selanjutnya",
+                        "previous":   "Sebelumnya"
+                    },
+                    "aria": {
+                        "sortAscending":  ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                }
             });
+
+            $('body').on('click', '#btn-qr', function() {
+                var id = $(this).val();
+                ajaxurl = '{{ route("admin.product.qrcode", "id") }}'
+                $.ajax({
+                    type: 'GET',
+                    url: ajaxurl,
+                    data: {
+                        id: id,
+                    },
+                    success: function(data) {
+                        // console.log(data)
+                        $('#formModal').modal('show');
+                        $('#qrcode').html(data);
+                        // window.location()
+                    },
+                    error: function(data) {
+                        console.log("Error: ",data)
+                    }
+                });
+            });
+
             // Delete one item
             $('body').on('click', '#btn-delete', function(){
                 var id = $(this).val();

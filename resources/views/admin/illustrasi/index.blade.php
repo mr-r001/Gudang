@@ -17,6 +17,10 @@
         font-size: 12px;
         color: black;
       }
+      .product {
+        font-size: 14px;
+        color: black;
+      }
       .wrapper-rack {
         min-width: 90%;
         display: flex;
@@ -30,7 +34,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
         align-items: center;
         margin-right: 10px;
         margin-bottom: 10px;
@@ -57,7 +60,7 @@
                 foreach ($rack as $data) {
                   echo "<div class='rack'>";
                   echo "<h5 class='label'>".$data->position."</h5>";
-                  echo "<p>".$data->product['name']."</p>";
+                  echo "<p class='product'>".substr($data->product['name'],0,7)."</p>";
                   echo "</div>";
                 }
               echo "</div>";

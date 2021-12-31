@@ -6,9 +6,11 @@ use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Product;
 use App\Models\Rack;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProductController extends Controller
 {
@@ -238,5 +240,13 @@ class ProductController extends Controller
         $rack = Rack::where('category_id', $id)->where('product_id', NULL)->get();
 
         return response()->json($rack);
+    }
+
+    public function qrcode($id)
+    {
+
+        $qrcode = $id;
+
+        return view('admin.product.pdf', compact('qrcode'));
     }
 }

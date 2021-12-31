@@ -2,6 +2,7 @@
 @section('title', 'Transaksi')
 
 @section('css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
     <style>
       .category {
         min-width: 10%;
@@ -31,14 +32,6 @@
         display: flex;
         flex-wrap: wrap;
       }
-      .rack {
-        width: 250px;
-        height: 300px;
-        border-radius: 12px;
-        background-color: #D7D7D7;
-        margin-right: 10px;
-        margin-bottom: 10px;
-      }
       .rackNull {
         width: 250px;
         height: 300px;
@@ -49,13 +42,6 @@
         align-items: center;
         margin-right: 10px;
         margin-bottom: 10px;
-      }
-      .thumbnail {
-        width: 100%;
-        height: 60%;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-        margin-bottom: 10px
       }
     </style>
 @endsection
@@ -79,11 +65,25 @@
                   <?php
                   foreach ($rack as $data) { ?>
                       @if ($data->product['photo'])
-                      <div class="rack">
-                        <img src="http://127.0.0.1:8000/img/product/{{ $data->product['photo'] }}" class="thumbnail" />
-                        <h5 class="productName">{{ $data->product['name'] }}</h5>
-                        <h5 class="stock">Stok Barang: {{ $data->product['stock'] }}</h5>
-                        <p class="stock">Letak Barang di rak: {{ $data->position }}</p>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                        <article class="article">
+                          <div class="article-header">
+                            <div class="article-image" data-background="http://127.0.0.1:8000/img/product/{{ $data->product['photo'] }}">
+                            </div>
+                            <div class="article-title">
+                              <h2><a href="#">{{ $data->product['name'] }}</a></h2>
+                            </div>
+                          </div>
+                          <div class="article-details">
+                            <h5>Stok Barang: <span id="stock">{{ $data->product['stock'] }}</span></h5>
+                            <p>Letak Barang di rak: {{ $data->position }} </p>
+                            <div class="article-cta">
+                              <button class="btn btn-primary" onclick="btnSubmit({{ $data->product_id }})">
+                                Ambil Barang
+                              </button>
+                            </div>
+                          </div>
+                        </article>
                       </div>
                       @else
                       <div class="rackNull">
@@ -103,6 +103,43 @@
     </div>
     </section>
   </div>
+@endsection
+
+@section('js')  
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        function btnSubmit(id){
+          ajaxurl = '{{ route("admin.addCart", "id") }}'
+          $.ajax({
+              type: 'GET',
+              url: ajaxurl,
+              data: {
+                  id: id,
+              },
+              success: function(data) {
+                if (data.message == 'Stok kosong') {
+                  toastr.error('Maaf, Stok Kosong!')
+                } else {
+                  toastr.success('Berhasil ditambahkan ke keranjang.', {timeOut: 5000})
+                  setTimeout(function(){
+                    location.reload();
+                  }, 5000);
+                }
+              },
+              error: function(data) {
+                  console.log("Error: ",data)
+              }
+          });
+        }
+        $(document).ready(function() {
+            // Setup AJAX CSRF
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        })
+    </script>
 @endsection
 
 

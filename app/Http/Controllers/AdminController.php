@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Pengirim;
+use App\Models\Product;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -42,7 +45,10 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard.index');
+        $reseller = Pengirim::all();
+        $product  = Product::all();
+        $category = Category::all();
+        return view('admin.dashboard.index', compact('reseller', 'product', 'category'));
     }
 
     public function profile()

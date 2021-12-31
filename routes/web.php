@@ -33,6 +33,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin', 'active', '
     /* Product */
     Route::resource('product', 'ProductController');
     Route::get('product/search/{id}', 'ProductController@search')->name('product.search');
+    Route::get('product/qrcode/{id}', 'ProductController@qrcode')->name('product.qrcode');
 
     /* Category Product */
     Route::resource('category', 'CategoryController');
@@ -55,4 +56,9 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin', 'active', '
 
     /* Transaction */
     Route::resource('transaction', 'TransactionController');
+    Route::get('transaction/addCart/{id}', 'TransactionController@addCart')->name('addCart');
+
+    /* Cart */
+    Route::resource('cart', 'CartController');
+    Route::get('cart/search/{id}', 'CartController@search')->name('cart.search');
 });

@@ -18,7 +18,7 @@
 						<h4>Total Toko Pengirim</h4>
 						</div>
 						<div class="card-body">
-						10
+						{{ count($reseller) }}
 						</div>
 					</div>
 					</div>
@@ -33,7 +33,7 @@
 						<h4>Total Produk</h4>
 						</div>
 						<div class="card-body">
-						42
+							{{ count($product) }}
 						</div>
 					</div>
 					</div>
@@ -48,7 +48,7 @@
 						<h4>Total Kategori Produk</h4>
 						</div>
 						<div class="card-body">
-						1,201
+							{{ count($category) }}
 						</div>
 					</div>
 					</div>

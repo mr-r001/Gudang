@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ asset('backend/modules/bootstrap/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/modules/fontawesome/css/all.min.css') }}">
 
+
 @yield('css')
 
 <!-- Template CSS -->

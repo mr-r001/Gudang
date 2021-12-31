@@ -67,6 +67,17 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'simplesoftwareio/simple-qrcode' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
+    ),
+  ),
   'uxweb/sweet-alert' => 
   array (
     'providers' => 
@@ -87,6 +98,17 @@
     'aliases' => 
     array (
       'DataTables' => 'Yajra\\DataTables\\Facades\\DataTables',
+    ),
+  ),
+  'yoeunes/toastr' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Toastr' => 'Yoeunes\\Toastr\\Facades\\Toastr',
     ),
   ),
 );
